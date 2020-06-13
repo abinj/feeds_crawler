@@ -1,0 +1,15 @@
+
+kafkaConfig:
+  bootstrap.servers: localhost:4242
+  metadata.broker.list: localhost:9092
+  acks: all
+  retries: 0
+  linger.ms: 1
+  key.serializer: org.apache.kafka.common.serialization.StringSerializer
+  value.serializer: org.apache.kafka.common.serialization.StringSerializer
+  metadata.fetch.timeout.ms: 300
+  timeout.ms: 300
+  retry.backoff.ms: 10000
+  reconnect.backoff.ms: 10000
+
+kafkaTopic: Feeds
