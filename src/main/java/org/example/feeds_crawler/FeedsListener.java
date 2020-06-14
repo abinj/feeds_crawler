@@ -7,6 +7,7 @@ import org.example.feeds_crawler.configuration.CrawlerConfiguration;
 import org.example.feeds_crawler.feeds.constants.KafkaConstants;
 import org.example.feeds_crawler.feeds.listeners.FeedListener;
 import org.example.feeds_crawler.feeds.models.Feed;
+import org.example.feeds_crawler.feeds.models.Tweet;
 
 import java.util.Properties;
 
@@ -36,8 +37,12 @@ public class FeedsListener implements FeedListener {
     }
 
     @Override
-    public void onNewEntry(Feed feed) {
-        String feedJson = gson.toJson(feed);
-        kafkaProducer.send(new ProducerRecord<String, String>(configuration.getKafkaTopic(), feed.getLink(), feedJson));
+    public void onNewEntry(Tweet tweet) {
+        String feedJson = gson.toJson(tweet);
+        kafkaProducer.send(new ProducerRecord<String, String>(configuration.getKafkaTopic(), tweet.getId(), feedJson));
+    }
+
+    public void stop() {
+        kafkaProducer.close();
     }
 }

@@ -1,7 +1,7 @@
 package org.example.feeds_crawler.feeds.listeners;
 
-import org.example.feeds_crawler.feeds.models.Feed;
+import org.example.feeds_crawler.feeds.models.Tweet;
 
 public interface FeedListener {
-    void onNewEntry(Feed feed);
+    void onNewEntry(Tweet tweet);
 }
