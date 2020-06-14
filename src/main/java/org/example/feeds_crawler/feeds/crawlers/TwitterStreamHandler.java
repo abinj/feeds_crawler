@@ -95,6 +95,7 @@ public class TwitterStreamHandler extends Thread{
             @Override
             public void onStatus(Status status) {
                 Tweet tweet = parseTweet(status);
+                System.out.println("----- MESSAGE FOUND ------");
                 feedListener.onNewEntry(tweet);
             }
 
